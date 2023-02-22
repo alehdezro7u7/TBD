@@ -1,0 +1,95 @@
+MySQL Shell 8.0.32
+
+Copyright (c) 2016, 2023, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  SQL > \connect --mc root@localhost
+Creating a Classic session to 'root@localhost'
+Fetching global names for auto-completion... Press ^C to stop.
+Your MySQL connection id is 8
+Server version: 8.0.32 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:3306 ssl  SQL > create database agencia;
+Query OK, 1 row affected (0.0058 sec)
+ MySQL  localhost:3306 ssl  SQL > \use agencia
+Default schema set to `agencia`.
+Fetching global names, object names from `agencia` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  agencia  SQL > create table automovil
+                                        -> (numero de seria key,
+                                        -> marca varchar(50) not null,
+                                        -> modelo varchar(50) not null,
+                                        -> año int not null,
+                                        -> precio int not null);
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'de seria key,
+marca varchar(50) not null,
+modelo varchar(50) not null,
+año int ' at line 2
+ MySQL  localhost:3306 ssl  agencia  SQL > create table automovil (numero de serie key, marca varchar(50) not null, modelo varchar(50) not null, año int not null, precio int not nuell);
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'de serie key, marca varchar(50) not null, modelo varchar(50) not null, año int ' at line 1
+ MySQL  localhost:3306 ssl  agencia  SQL > create table automovil (numero de serie key, marca varchar(50) not null, modelo varchar(50) not null, año int not null, precio int not null);
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'de serie key, marca varchar(50) not null, modelo varchar(50) not null, año int ' at line 1
+ MySQL  localhost:3306 ssl  agencia  SQL > create table automovil(
+                                        -> numero_serie key,
+                                        -> marca varchar(50) not null,
+                                        -> modelo varchar(50) not null,
+                                        -> año int not null,
+                                        -> precio int not null);
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'key,
+marca varchar(50) not null,
+modelo varchar(50) not null,
+año int not null,' at line 2
+ MySQL  localhost:3306 ssl  agencia  SQL > desc agencia;
+ERROR: 1146 (42S02): Table 'agencia.agencia' doesn't exist
+ MySQL  localhost:3306 ssl  agencia  SQL > show tables;
+Empty set (0.0028 sec)
+ MySQL  localhost:3306 ssl  agencia  SQL > create table automovil( numero_serie key, marca varchar(50) not null, modelo varchar(50) not null, año int not null, precio int not null);
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'key, marca varchar(50) not null, modelo varchar(50) not null, año int not null,' at line 1
+ MySQL  localhost:3306 ssl  agencia  SQL > create table vendedor(
+                                        -> clave int auto_increment key,
+                                        -> apellidos varchar(50) not null,
+                                        -> nombre varchar(50) not null,
+                                        -> rfc varchar(13) not null,
+                                        -> comision por venta int not null);
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'por venta int not null)' at line 6
+ MySQL  localhost:3306 ssl  agencia  SQL > create table vendedor( clave int auto_increment key,  apellidos varchar(50) not null, nombre varchar(50) not null, rfc varchar(13) not null, comision_por_venta int not null);
+Query OK, 0 rows affected (0.0151 sec)
+ MySQL  localhost:3306 ssl  agencia  SQL > create table automovil( numero_serie int key, marca varchar(50) not null, modelo varchar(50) not null, año int not null, precio int not null);
+Query OK, 0 rows affected (0.0128 sec)
+ MySQL  localhost:3306 ssl  agencia  SQL > show tables;
++-------------------+
+| Tables_in_agencia |
++-------------------+
+| automovil         |
+| vendedor          |
++-------------------+
+2 rows in set (0.0016 sec)
+ MySQL  localhost:3306 ssl  agencia  SQL > create table cliente( clave int auto_increment key, apellidos varchar(50) not null, nombre varchar(50) not null, tipo_cliente varchar(50), razon_social varchar, rfc varchar(13 );
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', rfc varchar(13 )' at line 1
+ MySQL  localhost:3306 ssl  agencia  SQL > create table cliente( clave int auto_increment key, apellidos varchar(50) not null, nombre varchar(50) not null, tipo_cliente varchar(50), razon_social varchar, rfc varchar(13) not null );
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', rfc varchar(13) not null )' at line 1
+ MySQL  localhost:3306 ssl  agencia  SQL > create table cliente( clave int auto_increment key, apellidos varchar(50) not null, nombre varchar(50) not null, tipo_cliente varchar(50), razon_social varchar(50), rfc varchar(13) not null );
+Query OK, 0 rows affected (0.0134 sec)
+ MySQL  localhost:3306 ssl  agencia  SQL > show tables;
++-------------------+
+| Tables_in_agencia |
++-------------------+
+| automovil         |
+| cliente           |
+| vendedor          |
++-------------------+
+3 rows in set (0.0017 sec)
+ MySQL  localhost:3306 ssl  agencia  SQL > alter table agencia modify vendedor enum('3','5','10');
+ERROR: 1146 (42S02): Table 'agencia.agencia' doesn't exist
+ MySQL  localhost:3306 ssl  agencia  SQL > alter table vendedor modify comision_por_venta enum('3','5','10');
+Query OK, 0 rows affected (0.0346 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  localhost:3306 ssl  agencia  SQL > alter table cliente modify tipo_cliente enum('fisica','moral');
+Query OK, 0 rows affected (0.0301 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  localhost:3306 ssl  agencia  SQL >
